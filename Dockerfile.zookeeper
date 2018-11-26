@@ -1,15 +1,11 @@
-FROM centos:centos7
+FROM rewreu/lo:base
 
 WORKDIR /usr/local/kinetica/
 
-ADD resources/zookeeper-3.4.12.tar.gz .
+RUN wget https://apache.org/dist/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.tar.gz && \
+	tar -xf zookeeper-3.4.12.tar.gz
 
 COPY resources/zoo.cfg zookeeper-3.4.12/conf/zoo.cfg
-
-COPY resources/jdk-8u192-linux-x64.rpm .
-
-RUN yum localinstall -y jdk-8u192-linux-x64.rpm && rm jdk-8u192-linux-x64.rpm
-
 EXPOSE 2181 
 
 CMD ["/bin/sh","-c","cd zookeeper-3.4.12 && mkdir /usr/local/kinetica/zookeeper-3.4.12/data  && ./bin/zkServer.sh start && while true; do sleep 2; done"]
