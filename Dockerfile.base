@@ -1,0 +1,8 @@
+FROM centos:centos7
+
+WORKDIR /usr/local/kinetica/
+
+RUN yum install -y wget && \
+    wget http://files.kinetica.com/zwu/rpm/jdk-8u192-linux-x64.rpm && \
+    yum localinstall -y jdk-8u192-linux-x64.rpm && rm jdk-8u192-linux-x64.rpm
+

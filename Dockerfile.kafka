@@ -1,0 +1,12 @@
+FROM rewreu/ol:base
+
+WORKDIR /usr/local/kinetica/
+
+EXPOSE 9092 2888 3888
+
+RUN wget https://archive.apache.org/dist/kafka/2.0.0/kafka_2.11-2.0.0.tgz && \
+    tar -xf kafka_2.11-2.0.0.tgz && \ 
+
+CMD ["/bin/bash","-c","cd kafka_2.11-2.0.0 && \
+./bin/kafka-server-start.sh config/server.properties && \
+while true; do sleep 2; done"]
