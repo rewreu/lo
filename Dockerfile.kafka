@@ -8,7 +8,7 @@ RUN wget https://archive.apache.org/dist/kafka/2.0.0/kafka_2.11-2.0.0.tgz && \
     tar -xf kafka_2.11-2.0.0.tgz
 
 
-ADD ./resources/server.properties /usr/local/kinetica/kafka_2.11-2.0.0/config/server.properties
+COPY resources/server.properties /usr/local/kinetica/kafka_2.11-2.0.0/config/server.properties
 
 CMD ["/bin/bash","-c","cd kafka_2.11-2.0.0 && \
 ./bin/kafka-server-start.sh config/server.properties && \
