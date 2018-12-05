@@ -23,6 +23,19 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+  kinetica:
+    container_name: kinetica
+    image: rewreu/lo:kinetica
+    ports:
+      - "8080:8080" 
+      - "8088:8088" 
+      - "9191:9191"
+      - "9292:9292"
+    networks:
+      ovocepnet:
+        ipv4_address: 172.18.0.4
+    environment:
+      LICENSE_KEY: 
 
 networks:
   ovocepnet:
