@@ -3,7 +3,10 @@ This repo contains following images:
 Kafka, Zookeeper, Kinetica
 
 # Start the environment
-```docker-compose up -d```
+1. add Kinetica license key to "LICENSE_KEY: " in docker-compose.yml file.
+
+2. Use docker composer to start 
+	```docker-compose up -d```
 
 # Quick test of Kafka
 ## create a topic "test"
